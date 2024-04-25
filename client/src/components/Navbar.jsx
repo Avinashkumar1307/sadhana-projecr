@@ -3,6 +3,7 @@ import logo from '../assets/sadhana-logo.jpg'
 import sadhna from '../assets/Sadhana.jpg'
 import { Link } from 'react-router-dom'
 
+
 function Navbar() {
     return (
         <div className="flex justify-between mt-5 mx-8  items-center">
@@ -32,7 +33,7 @@ function Navbar() {
                             <Link to="">Prayers</Link>
                         </li>
                         <li className="rounded-lg px-4 py-2 bg-[#FFA500] text-white font-bold">
-                            <Link to="login">Login</Link>
+                            <Link to="register">Login</Link>
                         </li>
                     </ul>
                 </nav>
