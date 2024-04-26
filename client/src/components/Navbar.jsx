@@ -18,19 +18,19 @@ function Navbar() {
                 <nav>
                     <ul className="flex space-x-6 items-center text-xl">
                         <li>
-                            <Link to="">Home</Link>
+                            <Link to="/home">Home</Link>
                         </li>
                         <li>
-                            <Link to="">Community</Link>
+                            <Link to="/community">Community</Link>
                         </li>
                         <li>
-                            <Link to="">Events</Link>
+                            <Link to="/events">Events</Link>
                         </li>
                         <li>
-                            <Link to="">Resources</Link>
+                            <Link to="/resources">Resources</Link>
                         </li>
                         <li>
-                            <Link to="">Prayers</Link>
+                            <Link to="/prayers">Prayers</Link>
                         </li>
                         <li className="rounded-lg px-4 py-2 bg-[#FFA500] text-white font-bold">
                             <Link to="register">Login</Link>
