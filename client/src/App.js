@@ -9,6 +9,7 @@ import Community from './components/Community';
 import Events from './components/Events';
 import Prayers from './components/Prayers';
 import Resources from './components/Resources';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/prayers' element={<Prayers />} />
           <Route path='/resources' element={<Resources />} />
         </Routes>
+        <Footer />
       </div>
     </>
   );
