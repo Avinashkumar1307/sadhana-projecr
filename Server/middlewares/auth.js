@@ -13,10 +13,10 @@ exports.auth = (req,res, next) => {
         // console.log("body" , req.body.token);
         // console.log("cookie" , req.cookies.token);
         
-        console.log("header", req.header("Authorization"));
+        // console.log("header", req.header("Authorization"));
        
         // const token = req.cookies.token || req.body.token || req.header("Authorization").replace("Bearer ", "");
-        const token = req.body.token;
+        const token = req.body.token || req.header("Authorization").replace("Bearer ", "");
         if(!token || token === undefined) {
             return res.status(401).json({
                 success:false,
