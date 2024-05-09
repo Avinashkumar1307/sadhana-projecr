@@ -6,10 +6,11 @@ const bcrypt = require("bcrypt");
 exports.signup = async (req, res) => {
     try {
         // Extract user data from request body
-        const { name, email, mobile, country, age, gender, password, repassword } = req.body;
+        
+        const { name, email, mobile, country, age, gender, password, confirmPassword } = req.body;
 
         // Validate required fields
-        if (!name || !email || !mobile || !country || !age || !gender || !password || !repassword) {
+        if (!name || !email || !mobile || !country || !age || !gender || !password || !confirmPassword) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are required"
@@ -25,11 +26,11 @@ exports.signup = async (req, res) => {
             });
         }
 
-        // Check if password and repassword match
-        if (repassword !== password) {
+        // Check if password and confirmPassword match
+        if (confirmPassword !== password) {
             return res.status(400).json({
                 success: false,
-                message: 'Password and Repassword should match',
+                message: 'Password and confirmPassword should match',
             });
         }
 

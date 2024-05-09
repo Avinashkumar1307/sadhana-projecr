@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/Vector.png';
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:4000/api/v1/login', formData);
+      console.log('Response:', response.data);
+      // Handle successful response (e.g., redirect user, show success message)
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error (e.g., display error message to user)
+    }
+  };
   return (
     <>
       <div className='flex justify-center items-center mb-3'>
@@ -13,18 +34,23 @@ function Login() {
           <p className=" text-5xl  leading-6 tracking-tight mt-3">"Welcome back devoted soul"</p>
           <p className=" text-2xl  tracking-tight mt-10 text-center">Return to the path of divine love. Sign in and walk hand-in-hand with lord Krishna</p>
           <div className='mt-5'>
-            <form>
+            <form onSubmit={handleSubmit}>
 
 
               <div className="relative mb-2 mt-2 flex items-center">
                 <MdOutlineMail className=" absolute left-4 mb-0 mt-auto" />
-                <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email"></input>
+                <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email" name="email"
+                  value={formData.email}
+                  onChange={handleChange}></input>
               </div>
 
 
               <div className="relative mb-2 mt-2 flex items-center">
                 <RiLockPasswordLine className=" absolute left-4 mb-0 mt-auto" />
-                <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password"></input>
+                <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange} placeholder="Password"></input>
               </div><br />
               <div className='text-right'>
                 <Link to="/login"><span className='text-[#008080]'>Forget Password ?</span></Link>
@@ -56,8 +82,6 @@ function Login() {
                 Already have an account? <Link to="/register"><span className='text-[#008080]'>Sign In</span></Link>
               </p>
             </div>
-            <div className='h-[200px]'></div>
-
           </div>
 
         </div>

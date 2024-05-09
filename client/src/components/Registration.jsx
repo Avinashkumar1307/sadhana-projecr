@@ -29,14 +29,14 @@ function Registration() {
         e.preventDefault();
         console.log(formData);
         try {
-          const response = await axios.post('http://localhost:4000/api/v1/create', formData);
-          console.log('Response:', response.data);
-          // Handle successful response
+            const response = await axios.post(`http://localhost:4000/api/v1/create`, formData);
+            console.log('Response:', response.data);
+            // Handle successful response
         } catch (error) {
-          console.error('Error:', error);
-          // Handle error
+            console.error('Error:', error);
+            // Handle error
         }
-      };
+    };
     return (<>
         <div className='flex justify-center items-center'>
             <div className='flex justify-center items-center flex-col w-[600px]'>
@@ -103,8 +103,6 @@ function Registration() {
                             Already have an account? <Link to="/login"><span className='text-[#008080]'>Sign In</span></Link>
                         </p>
                     </div>
-                    <div className='h-[200px]'></div>
-
                 </div>
 
             </div>
