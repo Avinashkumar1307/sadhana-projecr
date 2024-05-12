@@ -2,12 +2,18 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/sadhana-logo.jpg';
 import sadhna from '../assets/Sadhana.jpg';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
   const location = useLocation();
+  const user = useSelector(state => state.login.user);
+
+
+
 
   return (
     <div className="flex justify-between mt-5 mx-8 items-center">
+
       <div className="flex items-center">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Logo" loading="lazy" className="mr-2" />
@@ -21,6 +27,7 @@ function Navbar() {
             <li>
               <Link to="/home" className={`${location.pathname === '/home' ? 'text-[#008080]' : ''}`}>Home</Link>
             </li>
+
             <li>
               <Link to="/community" className={`${location.pathname === '/community' ? 'text-[#008080]' : ''}`}>Community</Link>
             </li>
@@ -36,6 +43,7 @@ function Navbar() {
             <li className="rounded-lg px-4 py-2 bg-[#FFA500] text-white font-bold">
               <Link to="/register">Login</Link>
             </li>
+
           </ul>
         </nav>
       </div>

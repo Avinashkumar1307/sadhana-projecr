@@ -54,6 +54,11 @@ const userSchema = new mongoose.Schema({
     dateOfBirth: {
         type: Date, // Assuming date of birth is a date
     },
+    profilePicture: {
+        type: String,
+        default:
+            'https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg',
+    },
     createdAt: {
         type: Date,
         default: Date.now // Added default value

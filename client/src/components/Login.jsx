@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import logo from '../assets/Vector.png';
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+// import axios from 'axios';
+// import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux/Slices/login/thunk';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -11,21 +14,41 @@ function Login() {
     password: ''
   });
 
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  // const [token, setToken] = useState(null);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:4000/api/v1/login', formData);
-      console.log('Response:', response.data);
-      // Handle successful response (e.g., redirect user, show success message)
-    } catch (error) {
-      console.error('Error:', error);
-      // Handle error (e.g., display error message to user)
-    }
+    // try {
+    //   const response = await axios.post('http://localhost:4000/api/v1/login', formData);
+    //   console.log('Response:', response.data);
+    //   Cookies.set('authToken', response.data.token);
+    //   localStorage.setItem(
+    //     "userData",
+    //     JSON.stringify({
+    //       token: response.data.token,
+    //       name: response.data.user.name,
+    //       gender: response.data.user.gender,
+    //       email: response.data.user.email,
+    //     })
+    //   );
+      navigate("/home");
+    //   // Handle successful response (e.g., redirect user, show success message)
+    // } catch (error) {
+    //   console.error('Error:', error);
+    //   // Handle error (e.g., display error message to user)
+    // }
+    dispatch(loginUser(formData));
   };
+  // const temp = Cookies.get('authToken');
+  // console.log(temp);
+
   return (
     <>
       <div className='flex justify-center items-center mb-3'>
@@ -35,8 +58,6 @@ function Login() {
           <p className=" text-2xl  tracking-tight mt-10 text-center">Return to the path of divine love. Sign in and walk hand-in-hand with lord Krishna</p>
           <div className='mt-5'>
             <form onSubmit={handleSubmit}>
-
-
               <div className="relative mb-2 mt-2 flex items-center">
                 <MdOutlineMail className=" absolute left-4 mb-0 mt-auto" />
                 <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email" name="email"
@@ -66,7 +87,7 @@ function Login() {
                 </div>
               </div>
               <br />
-              <button class="w-full py-2 rounded-md shadow-lg font-medium text-gray-100 block transition duration-300 bg-[#008080] text-xl" type="submit">
+              <button class="w-full py-2 rounded-md shadow-lg font-medium text-gray-100 block transition duration-300 bg-[#008080] text-xl" onClick={handleSubmit}>
                 Log In
               </button>
               <br />
