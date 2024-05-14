@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/Vector.png';
+
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { FaMobileAlt } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { ImProfile } from "react-icons/im";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import Herosection from '../Utils/Herosection';
 function Registration() {
     const [formData, setFormData] = useState({
         name: '',
@@ -40,9 +40,8 @@ function Registration() {
     return (<>
         <div className='flex justify-center items-center'>
             <div className='flex justify-center items-center flex-col w-[600px]'>
-                <img src={logo} alt='logo' width="200px" className='mt-3' />
-                <p className=" text-5xl  leading-6 tracking-tight mt-3">"Begin your journey"</p>
-                <p className=" text-2xl  tracking-tight mt-10 text-center">Open your heart to the divine presence. Sign up today and experience the transformative power of bhakti yoga.</p>
+                <Herosection heading="Begin your journey" subheading="Open your heart to the divine presence. Sign up today and experience the transformative power of bhakti yoga." />
+
                 <div className='mt-5'>
                     <form onSubmit={handleSubmit}>
 

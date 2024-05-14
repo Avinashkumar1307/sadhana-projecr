@@ -1,5 +1,5 @@
 
-// auth, isStudent,isAdmin
+// auth, isUser,isAdmin
 
 const jwt = require("jsonwebtoken");
 require("dotenv").config();

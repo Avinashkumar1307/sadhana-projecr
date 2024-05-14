@@ -13,7 +13,6 @@ function Navbar() {
 
   return (
     <div className="flex justify-between mt-5 mx-8 items-center">
-
       <div className="flex items-center">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Logo" loading="lazy" className="mr-2" />
@@ -40,9 +39,15 @@ function Navbar() {
             <li>
               <Link to="/prayers" className={`${location.pathname === '/prayers' ? 'text-[#008080]' : ''}`}>Prayers</Link>
             </li>
-            <li className="rounded-lg px-4 py-2 bg-[#FFA500] text-white font-bold">
-              <Link to="/register">Login</Link>
-            </li>
+            {
+              user.token === undefined && <li className="rounded-lg px-4 py-2 bg-[#FFA500] text-white font-bold">
+                <Link to="/register">Login</Link>
+              </li>
+            }
+            {
+              user.token !== undefined && user && (<img src={user?.user?.profilePicture} className="rounded-full w-8 h-8  font-bold" alt="profile"/>)
+
+            }
 
           </ul>
         </nav>

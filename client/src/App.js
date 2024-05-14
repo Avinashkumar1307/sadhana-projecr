@@ -10,7 +10,8 @@ import Events from './components/Events';
 import Prayers from './components/Prayers';
 import Resources from './components/Resources';
 import Footer from './components/Footer';
-
+import VerifyByEmail from './components/verify/VerifyByEmail';
+import ResetPassword from './components/verify/ResetPassword';
 function App() {
   return (
     <>
@@ -25,6 +26,8 @@ function App() {
           <Route path='/events' element={<Events />} />
           <Route path='/prayers' element={<Prayers />} />
           <Route path='/resources' element={<Resources />} />
+          <Route path='/verify/verifybyemail' element={<VerifyByEmail/>}/>
+          <Route path='/verify/resetpassword' element={<ResetPassword/>}/>
         </Routes>
         <Footer />
       </div>

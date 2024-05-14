@@ -5,11 +5,13 @@ const PORT = process.env.PORT || 4000;
 require('./config/database').connect();
 const user = require('./routes/user')
 const questionAndAnswers = require('./routes/QuestionAndAnswer')
+const admin = require('./routes/Admin')
 const cors = require('cors')
 app.use(cors());
 app.use(express.json());
 app.use("/api/v1", user)
 app.use("/api/v2", questionAndAnswers)
+app.use("/api/v1/admin",admin)
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import logo from '../assets/Vector.png';
+
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Link, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-// import Cookies from 'js-cookie';
+import Herosection from '../Utils/Herosection';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../redux/Slices/login/thunk';
 
@@ -52,14 +51,13 @@ function Login() {
   return (
     <>
       <div className='flex justify-center items-center mb-3'>
+        
         <div className='flex justify-center items-center flex-col w-[600px]'>
-          <img src={logo} alt='logo' width="200px" className='mt-3' />
-          <p className=" text-5xl  leading-6 tracking-tight mt-3">"Welcome back devoted soul"</p>
-          <p className=" text-2xl  tracking-tight mt-10 text-center">Return to the path of divine love. Sign in and walk hand-in-hand with lord Krishna</p>
+        <Herosection heading="Welcome back devoted soul" subheading="Return to the path of divine love. Sign in and walk hand-in-hand with lord Krishna"/>
           <div className='mt-5'>
             <form onSubmit={handleSubmit}>
               <div className="relative mb-2 mt-2 flex items-center">
-                <MdOutlineMail className=" absolute left-4 mb-0 mt-auto" />
+                <MdOutlineMail className="absolute left-4 mb-0 mt-auto" />
                 <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email" name="email"
                   value={formData.email}
                   onChange={handleChange}></input>
@@ -74,7 +72,7 @@ function Login() {
                   onChange={handleChange} placeholder="Password"></input>
               </div><br />
               <div className='text-right'>
-                <Link to="/login"><span className='text-[#008080]'>Forget Password ?</span></Link>
+                <Link to="/verify/verifybyemail"><span className='text-[#008080]'>Forget Password ?</span></Link>
               </div>
               <br />
 
@@ -100,7 +98,7 @@ function Login() {
             </button>
             <div className='mt-3'>
               <p className='text-xl tracking-tight pl-2 text-center'>
-                Already have an account? <Link to="/register"><span className='text-[#008080]'>Sign In</span></Link>
+                Already have an account? <Link to="/register"><span className='text-[#008080]'>Sign Up</span></Link>
               </p>
             </div>
           </div>
